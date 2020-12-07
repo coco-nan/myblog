@@ -201,12 +201,14 @@ export default {
     emty() {
       this.form = {};
       this.getAll(1);
+      this.pageIndex = 1;
     },
     // 发布
     publish(index, row) {
       this.$axios.post(api.blog.publish, { id: row.id }).then((data) => {
         if (data.code == 200) {
           alert("发布成功");
+          this.pageIndex = 1;
           this.getAll(1)
         } else {
           alert("发布失败");
@@ -243,6 +245,7 @@ export default {
       };
       this.$router.push({path:"/blogsub",query:obj});
       this.change = false;
+      this.pageIndex = 1;
     },
     // 删
     handleDelete(index, row) {
@@ -254,6 +257,7 @@ export default {
         if (data.code == 200) {
           alert("成功");
           this.getAll(1);
+           this.pageIndex = 1;
         }
       });
     },
@@ -297,6 +301,7 @@ export default {
     next() {
       if (this.pageIndex < this.pageTotal) {
         this.pageIndex += 1;
+        console.log(this.pageIndex,2)
         this.getAll(this.pageIndex);
       }
     },

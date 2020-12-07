@@ -4,7 +4,7 @@ module.exports = {
     assetsDir: 'static',
     outputDir: 'dist',
     configureWebpack: {
-        plugins: [new WebpackBundleAnalyzerPlugin()]
+        // plugins: [new WebpackBundleAnalyzerPlugin()]
     },
 
     productionSourceMap: false,
